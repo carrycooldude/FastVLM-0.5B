@@ -66,7 +66,7 @@ class ChatAdapter : ListAdapter<ChatMessage, RecyclerView.ViewHolder>(ChatDiffCa
         }
     }
 
-    class AssistantViewHolder(private val binding: ItemMessageAssistantBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class AssistantViewHolder(private val binding: ItemMessageAssistantBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(message: ChatMessage) {
             if (message.text.isEmpty()) {
                 binding.tvAssistantMessage.visibility = View.GONE

@@ -97,9 +97,9 @@ class InferenceEngine(private val context: Context) {
                     systemInstruction = Contents.of("You are a helpful, precise vision-language assistant. " +
                             "Describe images accurately and answer questions based strictly on the provided visual information."),
                     samplerConfig = SamplerConfig(
-                        temperature = 0.4f, // Lower temperature for more focus
+                        temperature = 0.4, // Double
                         topK = 40,
-                        topP = 0.95f
+                        topP = 0.95 // Double
                     )
                 )
                 
