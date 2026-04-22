@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device-targeting-config>
+    <device-group name="Qualcomm_SM8750">
+        <!-- Snapdragon 8 Elite is SM8750 -->
+        <system-feature name="android.hardware.camera.level.full" />
+    </device-group>
+</device-targeting-config>
