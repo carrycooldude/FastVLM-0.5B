@@ -10,6 +10,9 @@ import com.google.ai.edge.litertlm.Engine
 import com.google.ai.edge.litertlm.EngineConfig
 import com.google.ai.edge.litertlm.LogSeverity
 import com.google.ai.edge.litertlm.Message
+import com.google.ai.edge.litertlm.ConversationConfig
+import com.google.ai.edge.litertlm.SamplerConfig
+import com.google.ai.edge.litertlm.Contents
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -88,7 +91,19 @@ class InferenceEngine(private val context: Context) {
             try {
                 engine = Engine(config)
                 engine!!.initialize()
-                conversation = engine!!.createConversation()
+                
+                // Configure generation parameters for better quality
+                val conversationConfig = ConversationConfig(
+                    systemInstruction = Contents.of("You are a helpful, precise vision-language assistant. " +
+                            "Describe images accurately and answer questions based strictly on the provided visual information."),
+                    samplerConfig = SamplerConfig(
+                        temperature = 0.4f, // Lower temperature for more focus
+                        topK = 40,
+                        topP = 0.95f
+                    )
+                )
+                
+                conversation = engine!!.createConversation(conversationConfig)
                 Log.i(TAG, "Engine initialized successfully")
             } catch (e: Exception) {
                 Log.e(TAG, "Engine initialization failed", e)

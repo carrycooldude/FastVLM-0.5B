@@ -10,7 +10,7 @@ litert = "2.1.4"
 litertlm = "0.10.2" 
 coil = "2.7.0"
 activityKtx = "1.10.1"
-
+markwon = "4.6.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -23,9 +23,7 @@ litert = { group = "com.google.ai.edge.litert", name = "litert", version.ref = "
 litertlm = { group = "com.google.ai.edge.litertlm", name = "litertlm-android", version.ref = "litertlm" }
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
-
-
+markwon-core = { group = "io.noties.markwon", name = "core", version.ref = "markwon" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-

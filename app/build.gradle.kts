@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.litert)
     implementation(libs.litertlm)
     implementation(libs.coil)
+    implementation(libs.markwon.core)
     implementation(libs.activity.ktx)
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
     

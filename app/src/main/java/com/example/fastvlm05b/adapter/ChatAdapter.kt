@@ -13,9 +13,12 @@ import com.example.fastvlm05b.databinding.ItemMessageAssistantBinding
 import com.example.fastvlm05b.databinding.ItemMessageUserBinding
 import com.example.fastvlm05b.model.ChatMessage
 import com.example.fastvlm05b.model.Role
+import io.noties.markwon.Markwon
 import java.util.Date
 
 class ChatAdapter : ListAdapter<ChatMessage, RecyclerView.ViewHolder>(ChatDiffCallback()) {
+    
+    private var markwon: Markwon? = null
 
     companion object {
         private const val VIEW_TYPE_USER = 0
@@ -70,7 +73,13 @@ class ChatAdapter : ListAdapter<ChatMessage, RecyclerView.ViewHolder>(ChatDiffCa
                 binding.tvTypingIndicator.visibility = View.VISIBLE
             } else {
                 binding.tvAssistantMessage.visibility = View.VISIBLE
-                binding.tvAssistantMessage.text = message.text
+                
+                // Initialize Markwon if needed
+                if (markwon == null) {
+                    markwon = Markwon.create(itemView.context)
+                }
+                
+                markwon?.setMarkdown(binding.tvAssistantMessage, message.text)
                 binding.tvTypingIndicator.visibility = View.GONE
             }
         }
